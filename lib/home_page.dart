@@ -4,19 +4,40 @@ import 'package:google_fonts/google_fonts.dart';
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
+  final List<String> filters = const [
+    "All",
+    "Adidas",
+    "Nike",
+    "Ndure",
+    "Bata",
+    "Jordan"
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+
+    final border = OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Color.fromRGBO(225, 225, 225, 1),
+        ),
+        borderRadius: BorderRadius.horizontal(
+            left: Radius.circular(50)
+        )
+    );
+    return  SafeArea(
         child: Scaffold(
           body: Column(
             children: [
               Row(
                 children: [
-                  Text("Shoe\nCollection" ,
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Lato',
-                        fontSize: 20
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Text("Shoe\nCollection" ,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Lato',
+                          fontSize: 20
+                      ),
                     ),
                   ),
                   Expanded(
@@ -24,11 +45,25 @@ class HomePage extends StatelessWidget {
                         decoration: InputDecoration(
                           hintText: "Search",
                           hintStyle: TextStyle(),
-                          prefixIcon: Icon(Icons.search)
+                          prefixIcon: Icon(Icons.search ),
+                          border: border,
+                          enabledBorder: border,
+                          focusedBorder: border
                         ),
                       )
                   ),
                 ],
+              ),
+              SizedBox(
+                height: 150,
+                child: ListView.builder(
+                  itemCount:  filters.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder:(context , index){
+                    final filter = filters[index];
+                    return Chip(label: Text(filter));
+                  },
+                ),
               ),
             ],
           ),
