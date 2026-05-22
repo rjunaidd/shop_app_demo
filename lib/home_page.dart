@@ -8,16 +8,31 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const SafeArea(
         child: Scaffold(
-          body: Center(
-            child: Text("Shopping App" ,
-              style: TextStyle(
-                fontFamily: 'Lato',
-                fontWeight: FontWeight.w700,
-                fontSize: 30
-
-              ),),
-          )
-    )
+          body: Column(
+            children: [
+              Row(
+                children: [
+                  Text("Shoe\nCollection" ,
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Lato',
+                        fontSize: 20
+                    ),
+                  ),
+                  Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Search",
+                          hintStyle: TextStyle(),
+                          prefixIcon: Icon(Icons.search)
+                        ),
+                      )
+                  ),
+                ],
+              ),
+            ],
+          ),
+    ),
     );
   }
 }
