@@ -81,6 +81,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                   child: ElevatedButton(
                       onPressed: (){
                         },
+
                       style: ElevatedButton.styleFrom(
                         backgroundColor:  Theme.of(context).colorScheme.primary,
                         minimumSize: Size(double.infinity, 50)

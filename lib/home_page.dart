@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_app_demo/global_variables.dart';
 import 'package:shop_app_demo/product_card.dart';
+import 'package:shop_app_demo/product_detail_page.dart';
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -107,9 +108,11 @@ class _HomePageState extends State<HomePage> {
                     final product = products[index];
                     return InkWell(
                       onTap: (){
-                        setState(() {
-                          
-                        });
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) =>
+                                ProductDetailPage(product:  product)
+                            )
+                        );
                       },
                       child: ProductCard(
                         title: product["title"] as String ,
@@ -124,7 +127,10 @@ class _HomePageState extends State<HomePage> {
             )
           ],
         ),
+
+       // bottomNavigationBar:BottomNavigationBar(items: items) ,
       ),
+
     );
   }
 }
