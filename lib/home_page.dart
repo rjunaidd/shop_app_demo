@@ -11,9 +11,10 @@ class _HomePageState extends State<HomePage> {
 
   final filters = [
     "All",
-    "Adidas",
+    "Addidas",
     "Nike",
-    "Jordan",
+    "Bata",
+    "Jordan Shoes"
   ];
 
   late String selectedFilter;
@@ -74,7 +75,9 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: InkWell(
                       onTap: (){
-                        selectedFilter = filter;
+                        setState(() {
+                          selectedFilter = filter;
+                        });
                       },
                       child: Chip(
                         backgroundColor: selectedFilter == filter ? Theme.of(context).colorScheme.primary
