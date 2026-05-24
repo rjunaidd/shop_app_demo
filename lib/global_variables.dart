@@ -33,7 +33,7 @@ final product= [
   }
 ];
 
-final cart = [
+final cart =  [
   {
     {
       'id' : '1',
