@@ -26,6 +26,11 @@ class ProductDetailPage extends StatelessWidget {
           ),
           Spacer(
             flex: 2,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              
+            ),
           )
         ],
       ),
