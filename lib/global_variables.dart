@@ -1,7 +1,7 @@
 final products= [
   {
     'id' : '0',
-    "title" : 'Men\'s Shoes',
+    "title" : 'Men\'s Nike Shoes',
     "price" : 44.5,
     "imageUrl" : "assets/images/shoes_1.png",
     'company' : 'Nike',
