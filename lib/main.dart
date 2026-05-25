@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shop_app_demo/cart_provider.dart';
+import 'package:shop_app_demo/providers/cart_provider.dart';
 // import 'package:shop_app_demo/global_variables.dart';
-import 'package:shop_app_demo/home_page.dart';
+import 'package:shop_app_demo/pages/home_page.dart';
 // import 'package:shop_app_demo/product_detail_page.dart';
 
 void main() {
@@ -11,6 +11,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
 
   @override
   Widget build(BuildContext context) {
