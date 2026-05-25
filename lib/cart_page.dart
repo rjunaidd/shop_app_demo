@@ -33,11 +33,12 @@ class _CartPageState extends State<CartPage> {
                   builder: (context){
                     return AlertDialog(
                       title: Text("Delete Product",
-                      style: Theme.of(context).textTheme.bodyMedium,),
+                      style: Theme.of(context).textTheme.bodyMedium,
+                      ),
                     );
                   }
                   );
-            }, icon: Icon(Icons.delete,
+            }, icon: Icon(Icons.delete_rounded,
             color: Colors.red,)
             ),
             title: Text(cartItem['title'].toString(),
