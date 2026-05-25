@@ -12,42 +12,78 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
-    final cart = Provider.of<CartProvider>(context).cart;
-    return  Scaffold(
-      appBar: AppBar(
-        title: Text("Cart"),
-        centerTitle: true,
-      ),
+    final cart = context.watch<CartProvider>().cart;
+    // final cart = Provider.of<CartProvider>(context).cart;
+    return Scaffold(
+      appBar: AppBar(title: Text("Cart"), centerTitle: true),
       body: ListView.builder(
-          itemCount: cart.length,
-          itemBuilder: (context , index){
+        itemCount: cart.length,
+        itemBuilder: (context, index) {
           final cartItem = cart[index];
           return ListTile(
             leading: CircleAvatar(
               backgroundImage: AssetImage(cartItem['imageUrl'] as String),
               radius: 30,
             ),
-            trailing: IconButton(onPressed: (){
-              showDialog(
+            trailing: IconButton(
+              onPressed: () {
+                showDialog(
                   context: context,
-                  builder: (context){
+                  builder: (context) {
                     return AlertDialog(
-                      title: Text("Delete Product",
-                      style: Theme.of(context).textTheme.bodyMedium,
+                      title: Text(
+                        "Delete Product",
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
+                      content: Text(
+                        "Are you sure you want to remove the product fro your cart?",
+                      ),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text(
+                            'No',
+                            style: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            context
+                                .read<CartProvider>()
+                                .removeProduct(cartItem);
+                            // Provider.of<CartProvider>(context , listen: false).removeProduct(cartItem);
+                            Navigator.of(context).pop();
+                          },
+                          child: Text(
+                            "Yes",
+                            style: TextStyle(
+                              color: Colors.red,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
+                      ],
                     );
-                  }
-                  );
-            }, icon: Icon(Icons.delete_rounded,
-            color: Colors.red,)
+                  },
+                );
+              },
+              icon: Icon(Icons.delete_rounded, color: Colors.red),
             ),
-            title: Text(cartItem['title'].toString(),
+            title: Text(
+              cartItem['title'].toString(),
               style: Theme.of(context).textTheme.titleSmall,
             ),
             subtitle: Text("Size: ${cartItem['size']}"),
           );
-          }
-          ),
+        },
+      ),
     );
   }
 }
