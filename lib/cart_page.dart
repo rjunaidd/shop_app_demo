@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app_demo/global_variables.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_app_demo/cart_provider.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
@@ -11,6 +12,7 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<CartProvider>(context).cart;
     return  Scaffold(
       appBar: AppBar(
         title: Text("Cart"),
@@ -26,7 +28,15 @@ class _CartPageState extends State<CartPage> {
               radius: 30,
             ),
             trailing: IconButton(onPressed: (){
-
+              showDialog(
+                  context: context,
+                  builder: (context){
+                    return AlertDialog(
+                      title: Text("Delete Product",
+                      style: Theme.of(context).textTheme.bodyMedium,),
+                    );
+                  }
+                  );
             }, icon: Icon(Icons.delete,
             color: Colors.red,)
             ),
